@@ -10,16 +10,16 @@ secondary = #e60053
 alert = #bd2c40
 
 [bar/bar]
-;override-redirect = true
+override-redirect = true
 bottom = false
 ;monitor = ${env:MONITOR:HDMI-1}
-;monitor = eDP1
+;monitor = eDP-1-1
 width = 100%
 height = 20
 ;offset-x = 12.5%
 ;offset-y = 0%
 ;radius = 10.0
-fixed-center = false
+fixed-center = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -41,24 +41,65 @@ font-0 = Inconsolata:size=12
 font-1 = Inconsolata:size=12 
 font-2 = siji:size=10
 
-modules-left = xwindow bspwm
-;modules-center = 
-modules-right = filesystem xbacklight pulseaudio memory cpu wlan battery temperature date
+modules-left = bspwm
+modules-center = date
+modules-right = filesystem xbacklight pulseaudio memory cpu wlan battery temperature
 
 tray-position = right
 tray-padding = 2
 ;tray-background = #0063ff
 
-;wm-restack = bspwm
+wm-restack = bspwm
 ;wm-restack = i3
 
-;override-redirect = true
-
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
+scroll-up = bspwm-desknext
+scroll-down = bspwm-deskprev
 
 ;scroll-up = i3wm-wsnext
 ;scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[bar/hdmi]
+override-redirect = true
+bottom = false
+;monitor = ${env:MONITOR:HDMI-1}
+monitor = HDMI1
+width = 100%
+height = 20
+;offset-x = 12.5%
+;offset-y = 0%
+;radius = 10.0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 2
+line-color = #f00
+
+;border-size = 0
+;border-color = #00000000
+
+padding-left = 1
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 1
+
+font-0 = Inconsolata:size=12
+;font-1 = unifont:fontformat=truetype:size=8:antialias=false
+font-1 = Inconsolata:size=12 
+font-2 = siji:size=10
+
+modules-left = bspwm
+
+wm-restack = bspwm
+;wm-restack = i3
+
+scroll-up = bspwm-desknext
+scroll-down = bspwm-deskprev
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -180,11 +221,11 @@ format-disconnected =
 type = internal/date
 interval = 1
 
-date = " %d %B %Y"
+date-alt = " %d %B %Y"
 ;date-alt = " %Y-%m-%d"
 
-time = %H:%M:%S
-time-alt = %H:%M:%S
+time = %I:%M:%S
+time-alt = %I:%M:%S
 
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
@@ -280,7 +321,7 @@ screenchange-reload = true
 ;pseudo-transparency = false
 
 [global/wm]
-margin-top = 5
-margin-bottom = 5
+margin-top = 0
+margin-bottom = 0
 
 ; vim:ft=dosini

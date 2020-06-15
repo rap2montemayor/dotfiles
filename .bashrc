@@ -5,13 +5,14 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
+alias ls='ls --color=always'
 alias ll='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
-alias grep='grep --color=auto'
-alias diff='diff --color=auto'
+alias grep='grep --color=always'
+alias diff='diff --color=always'
 alias mount_user='sudo mount -o gid=users,fmask=113,dmask=002'
+alias less='less -R'
 
 man() {
     LESS_TERMCAP_md=$'\e[01;36m' \
@@ -24,7 +25,7 @@ man() {
 }
 
 export EDITOR=nvim
-export EXPLORER=ranger
+export EXPLORER='st ranger'
 #PS1='[\u@\h \W]\$ '
 #PS1='[\[\e[36m\]\u\[\e[m\]@\h \W]\$ '
 PS1="\[\e[36m\][\[\e[m\]\[\e[36m\]\u\[\e[m\]\[\e[36m\]@\[\e[m\]\[\e[36m\]\h\[\e[m\]\[\e[36m\] \[\e[m\]\W\[\e[36m\]]\[\e[m\]\\$ "
