@@ -24,8 +24,9 @@ man() {
     command man "$@"
 }
 
-export EDITOR=nvim
-export EXPLORER='st ranger'
-#PS1='[\u@\h \W]\$ '
-#PS1='[\[\e[36m\]\u\[\e[m\]@\h \W]\$ '
+export EDITOR='nvim'
+export TERMINAL='st'
+export BROWSER='firefox'
+export READER='zathura'
+
 PS1="\[\e[36m\][\[\e[m\]\[\e[36m\]\u\[\e[m\]\[\e[36m\]@\[\e[m\]\[\e[36m\]\h\[\e[m\]\[\e[36m\] \[\e[m\]\W\[\e[36m\]]\[\e[m\]\\$ "
