@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# Note: insert -ardelay 250 -arinterval 25 to line 42
+# of sx to make repeat rate permanent
+
+# Launch some programs
+#prime-offload &
+picom &
+unclutter &
+feh --no-fehbg --bg-scale ~/pictures/wallpapers/firewatch.png & 
+sxhkd &
+dwmblocks &
+
+# relaunch dwm if the binary changes
+old_csum=""
+csum=$(sha1sum $(which dwm))
+while true
+do
+    if [ "$csum" != "$old_csum" ]
+    then
+        old_csum=$csum
+        dwm
+    else
+        exit 0
+    fi
+    csum=$(sha1sum $(which dwm))
+done

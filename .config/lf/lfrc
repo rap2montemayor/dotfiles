@@ -1,0 +1,76 @@
+# SETTINGS #
+
+# set internal field separator (IFS) to "\n" for shell commands
+set ifs "\n"
+
+# set '-eu' options for shell commands
+set shellopts '-eu'
+
+
+
+# KEYMAPS #
+
+# use enter for shell commands
+map <enter> shell
+
+# use '<delete>' key for 'delete' command
+map <delete> delete
+
+# use <bs2> key to toggle hidden
+map <bs2> set hidden!
+
+# execute current file
+map x $$f
+map X !$f
+
+# dedicated keys for file opener actions
+map o &mimeopen $f
+map O $mimeopen --ask $f
+
+
+
+# CUSTOM COMMANDS #
+
+cmd open ${{
+    case $(file --mime-type $f -b) in
+        text/*) $EDITOR $fx;;
+        *) for f in $fx; do $OPENER $f; done;;
+    esac
+}}
+
+cmd delete ${{
+	set -f
+	printf "$fx\n"
+	printf "delete? [y/n] "
+	read ans
+	[ $ans = "y" ] && rm -rf $fx
+}}
+
+cmd extract ${{
+    set -f
+    case $f in
+        *.tar.bz|*.tar.bz2|*.tbz|*.tbz2) tar xjvf $f;;
+        *.tar.gz|*.tgz) tar xzvf $f;;
+        *.tar.xz|*.txz) tar xJvf $f;;
+        *.zip) unzip $f;;
+        *.rar) unrar x $f;;
+        *.7z) 7z x $f;;
+    esac
+}}
+
+cmd tar ${{
+    set -f
+    mkdir $1
+    cp -r $fx $1
+    tar czf $1.tar.gz $1
+    rm -rf $1
+}}
+
+cmd zip ${{
+    set -f
+    mkdir $1
+    cp -r $fx $1
+    zip -r $1.zip $1
+    rm -rf $1
+}}
+
