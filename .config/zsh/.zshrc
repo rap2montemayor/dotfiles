@@ -20,6 +20,12 @@ _comp_options+=(globdots)		# Include hidden files.
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
+# Aliases
+alias diff='diff --color=auto'
+alias grep='grep --color=auto'
+alias ls='ls --color=auto'
+alias mount_user='sudo mount -o gid=users,fmask=113,dmask=002'
+
 # lf wrapper to change directory on exit
 lf () {
     tmp="$(mktemp)"
@@ -34,5 +40,4 @@ lf () {
         fi
     fi
 }
-
 

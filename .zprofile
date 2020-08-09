@@ -3,6 +3,7 @@ export TERMINAL='st'
 export BROWSER='chromium'
 export READER='zathura'
 export PAGER='less'
+export OPENER='mimeopen'
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
@@ -24,3 +25,4 @@ export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
 if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
 	sx
 fi
+

@@ -16,14 +16,14 @@ super + Escape
 
 # Media Keys
 XF86AudioRaiseVolume
-    amixer set Master -q 5%+
+	pamixer -i 2
 XF86AudioLowerVolume
-    amixer set Master -q 5%-
+	pamixer -d 2
 XF86AudioMute
-    pactl set-sink-mute 0 toggle
+	pamixer -t
 
 # Brightness keys
 XF86MonBrightnessUp
-    xbacklight -inc 5
+    xbacklight -inc 2
 XF86MonBrightnessDown
-    xbacklight -dec 5
+    xbacklight -dec 2
