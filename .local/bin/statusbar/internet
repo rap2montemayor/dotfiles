@@ -1,0 +1,4 @@
+#!/bin/sh
+
+state=$(cat /sys/class/net/wlo1/operstate)
+printf " Connection: %s  " "$state"

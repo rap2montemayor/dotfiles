@@ -1,0 +1,7 @@
+#!/bin/sh
+
+battery=/sys/class/power_supply/BAT0
+capacity=$(cat "$battery"/capacity)
+status=$(sed "s/Discharging/-/; s/Charging/+/; s/Full/ /" "$battery"/status)
+
+printf " Battery: %s%s " "$capacity" "$status"

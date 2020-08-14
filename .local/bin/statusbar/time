@@ -1,0 +1,4 @@
+#!/bin/sh
+
+time=$(date '+%m/%d %I:%M:%S')
+printf " %s " "$time "

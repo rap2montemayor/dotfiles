@@ -1,0 +1,9 @@
+#!/bin/sh
+
+vol=$(pamixer --get-volume)
+if [ "$(pamixer --get-mute)" = "true" ]
+then
+	echo " Volume: Muted "
+else
+	printf " Volume: %s  " "$vol"
+fi

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+ime=$(ibus engine | grep -q "eng" && echo eng || echo jap)
+printf " Input: %s  " "$ime"
+
