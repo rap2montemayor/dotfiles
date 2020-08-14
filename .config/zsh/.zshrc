@@ -1,6 +1,6 @@
 # Enable colors and change prompt:
 autoload -U colors && colors	# Load colors
-PS1="%B%{$fg[cyan]%}[%n@%M %{$fg[reset_color]%}%~%{$fg[cyan]%}]%{$reset_color%}$%b "
+PS1="%B%{$fg[cyan]%}[%n@%M %{$fg[reset_color]%}%1~%{$fg[cyan]%}]%{$reset_color%}$%b "
 setopt autocd		# Automatically cd into typed directory.
 stty stop undef		# Disable ctrl-s to freeze terminal.
 

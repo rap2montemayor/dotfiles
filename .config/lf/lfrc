@@ -34,6 +34,7 @@ map O $mimeopen --ask $f
 cmd open ${{
     case $(file --mime-type $f -b) in
         text/*) $EDITOR $fx;;
+        image/*) feh $fx;;
         *) for f in $fx; do $OPENER $f; done;;
     esac
 }}

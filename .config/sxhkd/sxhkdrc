@@ -27,3 +27,6 @@ XF86MonBrightnessUp
     xbacklight -inc 2
 XF86MonBrightnessDown
     xbacklight -dec 2
+
+Print
+	scrot -e 'mv $f ~/pictures/screenshots/'
