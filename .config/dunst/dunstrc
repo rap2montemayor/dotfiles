@@ -1,0 +1,27 @@
+[global]
+    geometry = "360x40-12+32"
+    indicate_hidden = yes
+    transparency = 12
+    notification_height = 24
+    separator_height = 4
+    padding = 12
+    horizontal_padding = 12
+    font = Hack 12
+
+[urgency_normal]
+    background = "#222222"
+    foreground = "#bbbbbb"
+    timeout = 3
+
+[volume]
+    category = volume
+	set_stack_tag = volume
+
+[backlight]
+	category = backlight
+	set_stack_tag = backlight
+
+[screenshot]
+	category = screenshot
+    timeout = 1
+

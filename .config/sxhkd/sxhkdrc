@@ -16,17 +16,30 @@ super + Escape
 
 # Media Keys
 XF86AudioRaiseVolume
-	pamixer -i 2
+	[ $(pamixer --get-volume) -lt 120 ] \
+	&& pamixer --allow-boost -i 2 \
+	&& notify-send -c volume "Vol: $(pamixer --get-volume)"
+
 XF86AudioLowerVolume
-	pamixer -d 2
+	pamixer --allow-boost -d 2 \
+	&& notify-send -c volume "Vol: $(pamixer --get-volume)"
+
 XF86AudioMute
-	pamixer -t
+	pamixer -t \
+	&& notify-send -c volume \
+		"$([ $(pamixer --get-mute) = "true" ] && echo Muted || echo Unmuted)"
 
 # Brightness keys
 XF86MonBrightnessUp
-    xbacklight -inc 2
+    xbacklight -inc 2 \
+    && notify-send -c backlight "Backlight: $(xbacklight -get)"
+    	
 XF86MonBrightnessDown
-    xbacklight -dec 2
+    xbacklight -dec 2 \
+    && notify-send -c backlight "Backlight: $(xbacklight -get)"
 
 Print
-	scrot -e 'mv $f ~/pictures/screenshots/'
+	scrot -e 'mv $f ~/pictures/screenshots/' \
+	&& sleep 0.1 \
+	&& notify-send -c screenshot "Screenshot saved"
+
