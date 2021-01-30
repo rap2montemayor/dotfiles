@@ -24,7 +24,7 @@ bindkey '^e' edit-command-line
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias ls='ls --color=auto'
-alias mount_user='sudo mount -o gid=users,fmask=113,dmask=002'
+alias mount_user='sudo mount -o gid=raprap,fmask=113,dmask=002'
 
 # lf wrapper to change directory on exit
 lf () {

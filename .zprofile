@@ -1,5 +1,5 @@
 # Default Programs
-export BROWSER='chromium'
+export BROWSER='firefox'
 export EDITOR='vis'
 export OPENER='mimeopen'
 export PAGER='less'
@@ -15,11 +15,13 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 
 # Cleanup
-export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export LESSHISTFILE="-"
-export ZDOTDIR="$XDG_CONFIG_HOME"/zsh
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export GOPATH="$XDG_DATA_HOME"/go
+export GTK_RC_FILES="$XDG_CONFIG_HOME"/gtk-1.0/gtkrc
+export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 export WINEPREFIX="$XDG_DATA_HOME"/wineprefixes/default
+export ZDOTDIR="$XDG_CONFIG_HOME"/zsh
 
 # Color output for less
 export LESS=-R
@@ -36,9 +38,13 @@ export GTK_IM_MODULE=xim
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=xim
 
-# Start x server with sx 
+# Firefox hardware acceleration
+# export MOZ_X11_EGL=1
+# export MOZ_WEBRENDER=1
+
+# Start x server with startx 
 if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]
 then
-	sx
+	startx
 fi
 
