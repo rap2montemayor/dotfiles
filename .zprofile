@@ -1,5 +1,5 @@
 # Default Programs
-export BROWSER='firefox'
+export BROWSER='chromium'
 export EDITOR='vis'
 export OPENER='mimeopen'
 export PAGER='less'
@@ -34,9 +34,9 @@ export LESS_TERMCAP_us="$(printf '%b' '[1;32m')"
 export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
 
 # IME setup
-export GTK_IM_MODULE=xim
-export XMODIFIERS=@im=ibus
-export QT_IM_MODULE=xim
+export GTK_IM_MODULE=fcitx
+export XMODIFIERS=@fcitx
+export QT_IM_MODULE=fcitx
 
 # Firefox hardware acceleration
 # export MOZ_X11_EGL=1
@@ -45,6 +45,6 @@ export QT_IM_MODULE=xim
 # Start x server with startx 
 if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]
 then
-	startx
+	start -- -ardelay 250 -arinterval 25
 fi
 
