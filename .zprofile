@@ -1,10 +1,10 @@
 # Default Programs
 export BROWSER='chromium'
-export EDITOR='vis'
+export EDITOR='nvim'
 export OPENER='mimeopen'
 export PAGER='less'
 export READER='zathura'
-export TERMINAL='st'
+export TERMINAL='alacritty'
 
 # Add .local/bin (and its subdirectories) to $PATH
 export PATH="$PATH:$(du "$HOME/.local/bin" | cut -f2 | paste -sd ':')"
@@ -34,9 +34,9 @@ export LESS_TERMCAP_us="$(printf '%b' '[1;32m')"
 export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
 
 # IME setup
-export GTK_IM_MODULE=fcitx
-export XMODIFIERS=@fcitx
-export QT_IM_MODULE=fcitx
+# export GTK_IM_MODULE=fcitx
+# export XMODIFIERS=@fcitx
+# export QT_IM_MODULE=fcitx
 
 # Firefox hardware acceleration
 # export MOZ_X11_EGL=1
@@ -45,6 +45,6 @@ export QT_IM_MODULE=fcitx
 # Start x server with startx 
 if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]
 then
-	start -- -ardelay 250 -arinterval 25
+	startx -- -ardelay 250 -arinterval 25
 fi
 

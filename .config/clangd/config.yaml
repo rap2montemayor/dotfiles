@@ -1,0 +1,12 @@
+CompileFlags:
+  Add: [
+    -Wall, -Wshadow, -Wextra,
+  ]
+
+---
+
+# For C++ files
+If:
+  PathMatch: [.*\.cpp, .*\.hpp, .*\.h, .*\.inl, .*\.ipp, .*\.tpp]
+CompileFlags:
+  Add: [-std=c++17,-xc++]
