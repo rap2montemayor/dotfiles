@@ -1,6 +1,6 @@
-if [ "$TMUX" = "" ]; then
-  tmux attach 2> /dev/null || tmux && exit
-fi
+# if [ "$TMUX" = "" ]; then
+#   tmux attach 2> /dev/null || tmux && exit
+# fi
 
 # History
 HISTFILE=~/.cache/zsh/history
@@ -71,3 +71,10 @@ zinit ice atload"zpcdreplay" atclone"./zplug.zsh" atpull"%atclone"
 zinit light g-plane/pnpm-shell-completion
 
 eval "$(starship init zsh)"
+
+# pnpm
+export PNPM_HOME="/home/raprap/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
