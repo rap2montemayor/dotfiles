@@ -1,7 +1,6 @@
 # Default Programs
 export BROWSER='chromium'
 export EDITOR='nvim'
-export OPENER='mimeopen'
 export PAGER='less'
 export READER='zathura'
 export TERMINAL='alacritty'
@@ -15,23 +14,15 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 
 # Cleanup
-export LESSHISTFILE="-"
-export GNUPGHOME="$XDG_DATA_HOME"/gnupg
-export GOPATH="$XDG_DATA_HOME"/go
-export GTK_RC_FILES="$XDG_CONFIG_HOME"/gtk-1.0/gtkrc
-export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
-export WINEPREFIX="$XDG_DATA_HOME"/wineprefixes/default
 export ZDOTDIR="$XDG_CONFIG_HOME"/zsh
 
-# Color output for less
-export LESS=-R
-export LESS_TERMCAP_mb="$(printf '%b' '[1;31m')"
-export LESS_TERMCAP_md="$(printf '%b' '[1;36m')"
-export LESS_TERMCAP_me="$(printf '%b' '[0m')"
-export LESS_TERMCAP_so="$(printf '%b' '[01;44;33m')"
-export LESS_TERMCAP_se="$(printf '%b' '[0m')"
-export LESS_TERMCAP_us="$(printf '%b' '[1;32m')"
-export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
+# Color output for less and man
+export LESS='-R --use-color -Dd+r$Du+b$'
+export MANPAGER="less -R --use-color -Dd+r -Du+b"
+export MANROFFOPT="-P -c"
+
+# Podman socket
+export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/podman/podman.sock"
 
 # IME setup
 # export GTK_IM_MODULE=fcitx
@@ -42,9 +33,25 @@ export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
 # export MOZ_X11_EGL=1
 # export MOZ_WEBRENDER=1
 
-# Start x server with startx 
+# Hyprland Variables
+export XCURSOR_SIZE=24
+export QT_QPA_PLATFORMTHEME=qt6ct
+export QT_QPA_PLATFORM=wayland;xcb
+export LIBVA_DRIVER_NAME=nvidia
+export XDG_SESSION_TYPE=wayland
+export GBM_BACKEND=nvidia-drm
+export __GLX_VENDOR_LIBRARY_NAME=nvidia
+export WLR_NO_HARDWARE_CURSORS=1
+
+# Start Hyprland 
 if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]
 then
-	startx -- -ardelay 250 -arinterval 25
+  Hyprland
 fi
+
+# Start x server with startx 
+# if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]
+# then
+# 	startx -- -ardelay 250 -arinterval 25
+# fi
 
