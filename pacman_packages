@@ -10,9 +10,10 @@ chrony
 cmake
 cmake-format
 cmake-lint
+cryptsetup
 dash
+dhcpcd
 discord
-doas-sudo-shim
 dunst
 gimp
 git
@@ -40,9 +41,9 @@ networkmanager
 newsboat
 noto-fonts
 noto-fonts-cjk
+ntfs-3g
 nvm
 obs-studio
-opendoas
 openssh
 pamixer
 pavucontrol-qt
@@ -72,6 +73,7 @@ ttf-inconsolata-nerd
 ttf-joypixels
 ungoogled-chromium-bin
 unzip
+util-linux
 waybar
 wl-clipboard
 wofi
