@@ -1,53 +1,54 @@
 {
-  "modules-left": ["hyprland/workspaces"],
-  "modules-center": ["clock"],
-  "modules-right": ["network", "cpu", "memory", "disk", "pulseaudio", "tray"],
-  "height": 24,
+    "modules-left": ["hyprland/workspaces", "hyprland/window"],
+    "modules-center": ["clock"],
+    "modules-right": [ "network", "cpu", "memory", "disk", "pulseaudio", "battery", "tray"],
+    "height": 48,
 
-  "hyprland/window": {
-      "separate-outputs": true
-  },
-
-  "hyprland/workspaces": {
-     "persistent-workspaces": {
-        "DP-2": [1,2,3,4,5],
-        "HDMI-A-1": [6,7,8,9,10],
-      }
-  },
-
-  "clock": {
-    "interval": 1,
-    "format": "{:%F %r}"
-  },
-
-  "network": {
-    "interval": 5,
-    "format": "  {bandwidthUpBytes}   {bandwidthDownBytes} ",
-  },
-
-  "cpu": {
-    "interval": 5,
-    "format": "{usage}% ",
-    "tooltip": false
-  },
-
-  "memory": {
-    "format": "{}% "
-  },
-
-  "disk": {
-    "format": "{path}: {percentage_used}%",
-    "path": "/"
-  },
-
-  "pulseaudio": {
-    "format": "{volume}% {icon}",
-    "format-icons": {
-      "default": ["", "", ""]
+    "hyprland/window": {
+        "separate-outputs": true
     },
-  },
 
-  "tray": {
-    "spacing": 8
-  },
+    "hyprland/workspaces": {
+        "persistent-workspaces": {
+          "eDP-1": [1, 2, 3, 4, 5]
+        }
+    },
+
+    "battery": {
+        "format": "bat:{capacity}%",
+        "on-update": "if [ $(upower -i \"$(upower -e | grep BAT)\" | grep -E \"percentage\" | awk '{print $2}' | tr -d '%') -le \"68\" ]; then dunstify -u critical -t 60000 \"Battery low\"; fi"
+    },
+
+    "clock": {
+        "interval": 1,
+        "format": "{:%F %r}"
+    },
+
+    "cpu": {
+        "interval": 5,
+        "format": "cpu:{usage}%",
+        "tooltip": false
+    },
+
+    "disk": {
+        "format": "{path}:{percentage_used}%",
+        "path": "/"
+    },
+
+    "memory": {
+        "format": "ram:{}%"
+    },
+
+    "network": {
+        "interval": 5,
+        "format": "up:{bandwidthUpBytes} down:{bandwidthDownBytes}"
+    },
+
+    "pulseaudio": {
+        "format": "vol:{volume}%"
+    },
+
+    "tray": {
+        "spacing": 8
+    }
 }

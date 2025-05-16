@@ -1,0 +1,23 @@
+#!/bin/sh
+
+case "$1" in
+    "inc")
+        if [ "$(pamixer --get-volume)" -lt 120 ]; then
+            pamixer --allow-boost -i 2
+            dunstify --timeout 500 -h "string:x-dunst-stack-tag:volume" \
+                "Vol: $(pamixer --get-volume)"
+        fi
+        ;;
+    "dec")
+        pamixer -d 2
+        dunstify --timeout 500 -h "string:x-dunst-stack-tag:volume" \
+            "Vol: $(pamixer --get-volume)"
+        ;;
+    "mute")
+        pamixer -t
+        dunstify --timeout 500 -h "string:x-dunst-stack-tag:volume" \
+            "$([ "$(pamixer --get-mute)" = 'true' ] \
+                && echo Muted || echo Unmuted)"
+        ;;
+esac
+

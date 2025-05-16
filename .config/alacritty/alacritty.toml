@@ -1,10 +1,8 @@
-import = ["~/.config/alacritty/catppuccin-macchiato.toml"]
-
 [env]
 TERM = "xterm-256color"
 
 [font]
-size = 12
+size = 16
 
 [font.normal]
 family = "Inconsolata Nerd Font Mono"
@@ -13,5 +11,9 @@ family = "Inconsolata Nerd Font Mono"
 multiplier = 3
 
 [window.padding]
-x = 4
-y = 4
+x = 2
+y = 2
+
+[general]
+import = ["~/.config/alacritty/catppuccin-macchiato.toml"]
+

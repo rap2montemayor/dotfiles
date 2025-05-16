@@ -1,0 +1,17 @@
+#!/bin/sh
+
+case "$1" in
+    "inc")
+        brightnessctl -q s +5%
+        dunstify --timeout 500 \
+            -h "string:x-dunst-stack-tag:brightness" \
+            "Brightness: $(brightnessctl -m | cut -d ',' -f 4)"
+        ;;
+    "dec")
+        brightnessctl -q s 5%-
+        dunstify --timeout 500 \
+            -h "string:x-dunst-stack-tag:brightness" \
+            "Brightness: $(brightnessctl -m | cut -d ',' -f 4)"
+        ;;
+esac
+

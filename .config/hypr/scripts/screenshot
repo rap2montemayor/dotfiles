@@ -1,0 +1,42 @@
+#!/bin/sh
+
+dunstify_screenshot() {
+    dunstify -t 1000 -h "string:x-dunst-stack-tag:screenshot" "screeshot taken"
+}
+
+get_clients_for_slurp() {
+    WORKSPACE_ID=$(hyprctl activeworkspace -j | jq .id)
+    hyprctl clients -j \
+    | jq "map(select(.workspace.id == $WORKSPACE_ID))" \
+    | jq -r '
+        if any(.fullscreen == 1) then
+            map(select(.fullscreen == 1))
+        else 
+            .
+        end
+        | map([.at, .size, .title] | flatten)
+        | map(
+            [.[0], ",", .[1], " ", .[2], "x", .[3], " ", .[4] | tostring]
+            | join("")
+        )
+        | .[]
+    '
+}
+
+temp_output=$(mktemp)
+case "$1" in
+    "full") grim "$temp_output" ;;
+    "window") get_clients_for_slurp | slurp | grim -g - "$temp_output" ;;
+    "area") slurp | grim -g - "$temp_output" ;;
+esac
+
+if [ -s "$temp_output" ]; then
+    output_folder=~/pictures/grim
+    filename=$(date +"%Y%m%d_%H%M%S_%N".png)
+    wl-copy < "$temp_output"
+    mv "$temp_output" "$output_folder/$filename"
+    dunstify_screenshot
+else
+    rm "$temp_output"
+fi
+

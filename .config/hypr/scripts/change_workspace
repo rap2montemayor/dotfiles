@@ -3,7 +3,7 @@
 WORKSPACE=$1
 CUR=$(hyprctl monitors -j | jq 'map(select(.focused == true))[0].name')
 
-if [ "$CUR" = "\"DP-2\"" ]; then
+if [ "$CUR" = "\"eDP-1\"" ]; then
   hyprctl dispatch workspace $((WORKSPACE))
 else
   hyprctl dispatch workspace $((WORKSPACE + 5))

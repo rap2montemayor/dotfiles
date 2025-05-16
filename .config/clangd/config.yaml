@@ -1,7 +1,5 @@
 CompileFlags:
-  Add: [
-    -Wall, -Wshadow, -Wextra,
-  ]
+  Add: [-Wall, -Wshadow, -Wextra]
 
 ---
 
@@ -9,4 +7,4 @@ CompileFlags:
 If:
   PathMatch: [.*\.cpp, .*\.hpp, .*\.h, .*\.inl, .*\.ipp, .*\.tpp]
 CompileFlags:
-  Add: [-std=c++17,-xc++]
+  Add: [-std=c++20,-xc++]
